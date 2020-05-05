@@ -1,0 +1,359 @@
+<db-spec version="1.0">
+	<struct name="language">
+		<member name="is-default" type="boolean" default="false" />
+	</struct>
+
+	<struct name="dropdown">
+		<member name="values" type="key-reference" />
+	</struct>
+
+	<type name="key-type" extend="u8" />
+	<type name="id-type" extend="u32" />
+
+	<type name="language-id" extend="u8">
+		<enum name="en">
+			<aux struct="language" is-default="true" />
+		</enum>
+		<enum name="de" />
+	</type>
+
+	<type name="object-id" extend="id-type" />
+	<type name="property-id" extend="u8" />
+	<type name="object-name" extend="flex-string" />
+	<type name="option-u8" extend="u8" />
+	<type name="option-sex" extend="option-u8">
+		<enum name="m" text="Male" />
+		<enum name="f" text="Female" />
+	</type>
+	<type name="option-punc" extend="option-u8">
+		<enum name="unset" text="Unset" />
+		<enum name="include" text="Include" />
+		<enum name="exclude" text="Exclude" />
+	</type>
+
+	<value name="text-line">
+		<row><var name="text" type="flex-string" /></row>
+	</value>
+
+	<value name="text-multiline">
+		<row n="0"><var name="text" type="flex-string" /></row>
+	</value>
+
+	<value name="text-dummy">
+		<row><var n="0" name="text" type="flex-string" /></row>
+	</value>
+
+	<type name="annotated-type" extend="property-id" mapto="text-multiline">
+		<enum name="hist-comment" text="Historical Comment" />
+		<enum name="phil-comment" text="Philological Comment" />
+		<enum name="person-ref" text="Person" mapto="text-line"/>
+		<enum name="location-ref" text="Location" mapto="text-line" />
+		<enum name="paragraph-ref" text="Paragraph" mapto="text-line" />
+	</type>
+
+	<value name="text-annotated">
+		<row>
+			<record n="0" name="comments">
+				<var name="pbegin" type="u32" />
+				<var name="wbegin" type="u32" />
+				<var name="pend" type="u32" />
+				<var name="wend" type="u32" />
+				<var name="punc" type="option-punc" />
+				<var name="type" type="annotated-type" />
+				<var name="id" type="object-id" />
+			</record>
+		</row>
+		<row n="0">
+			<var name="text" type="flex-string" />
+		</row>
+	</value>
+
+	<value name="dummy">
+		<row>
+			<record name="rec" n="2">
+				<var name="a" type="u32" />
+			</record>
+			<var n="0" name="b" type="u32" />
+		</row>
+		<row n="2" name="row-a">
+			<var name="c" type="u32" />
+			<var n="0" name="d" type="u32" />
+		</row>
+		<row n="0" name="row-b">
+			<record name="bla">
+				<var name="i" type="u32" />
+			</record>
+			<var name="e" type="u32" />
+			<var n="2" name="f" type="u32" />
+			<var n="0" name="g" type="u32" />
+		</row>
+	</value>
+
+	<value name="dummy2">
+		<row name="row" n="2">
+			<record name="a" n="5">
+				<record n="3" name="b">
+					<var n="2" name="c" type="u32" />
+					<record name="d">
+						<var name="e" type="u32" />
+						<var name="f" type="u32" />
+					</record>
+					<var name="g" type="u32" />
+				</record>
+				<record name="h">
+					<var name="i" type="u32" />
+					<var name="j" type="u32" />
+				</record>
+			</record>
+			<var name="k" type="u32" n="0" />
+		</row>
+		<row>
+			<var name="a" n="2" type="u32" />
+			<var name="b" type="flex-string" />
+		</row>
+	</value>
+
+	<value name="object-ref">
+		<row><var name="id" type="object-id" /></row>
+	</value>
+
+	<!--	<value name="object-sorted-ref">
+		<row>
+			<var name="position" type="u32" />
+			<var name="id" type="object-id" />
+		</row>
+	</value>-->
+
+
+
+	<!--	<type name="an-extendable-dropdown" extend="text-line" enum="set">
+		<aux struct="dropdown" values="extendable-dropdown-values" />
+	</type>-->
+
+	<type name="comment-property-id" extend="property-id" mapto="text-line">
+		<enum name="content" text="Content" mapto="text-multiline" />
+		<enum name="sources" text="Sources" />
+		<enum name="literature" text="Literature" />
+	</type>
+	<namespace name="person">
+		<value name="sex">
+			<row><var name="sex" type="option-sex" /></row>
+		</value>
+
+		<type name="property-id" extend="property-id" mapto="text-line">
+			<enum name="name" text="Name" />
+			<enum name="sex" text="Sex" mapto="sex" />
+			<enum name="born" text="Born" />
+			<enum name="died" text="Died" />
+			<enum name="title" text="Title" />
+			<enum name="office-function" text="Office/Function" />
+			<enum name="profession" text="Profession" />
+			<enum name="reign-term-of-office" text="Reign/Term of Office" />
+			<enum name="ethnicity" text="Ethnicity" />
+			<enum name="religious-affiliation" text="Religious affiliation" />
+			<enum name="political-affiliation" text="Political affiliation" />
+			<enum name="political-opposition" text="Political opposition" />
+			<enum name="friendship" text="Friendship" />
+			<enum name="father" text="Father" />
+			<enum name="mother" text="Mother" />
+			<enum name="siblings" text="Siblings" />
+			<enum name="spouse" text="Spouse" />
+			<enum name="children" text="Children" />
+			<enum name="places" text="Places" />
+			<enum name="regions" text="Regions" />
+			<enum name="links" text="Links" />
+			<enum name="sources" text="Sources" />
+			<enum name="literature" text="Literature" />
+			<enum name="biography" mapto="text-multiline" text="Biography" />
+		</type>
+
+		<key name="class" mapto="object-ref">
+			<field type="object-name" />
+		</key>
+
+		<key name="object">
+			<field type="object-id" />
+			<field type="property-id" />
+			<field type="language-id" />
+		</key>
+	</namespace>
+	<namespace name="bibliography">
+		<type name="property-id" extend="property-id" mapto="text-line">
+			<enum name="expansion" text="ID Expansion" />
+			<enum name="link" text="Link" />
+		</type>
+
+		<type name="type" extend="u8">
+			<enum name="sources" text="Sources" />
+			<enum name="literature" text="Literature" />
+		</type>
+
+		<key name="class" mapto="object-ref">
+			<field type="type" />
+			<field type="object-name" />
+		</key>
+
+		<key name="object">
+			<field type="object-id" />
+			<field type="property-id" />
+			<field type="language-id" />
+		</key>
+	</namespace>
+
+	<namespace name="location">
+		<type name="property-id" extend="property-id" mapto="text-line">
+			<enum name="name" text="Name" />
+			<enum name="ancient-name" text="Ancient Name" />
+			<enum name="country" text="Country" />
+			<enum name="county" text="County" />
+			<enum name="roman-praefecture" text="Roman Praefecture" />
+			<enum name="roman-dioecese" text="Roman Dioecese" />
+			<enum name="roman-province" text="Roman Province" />
+			<enum name="getty-id" text="GettyID" />
+			<enum name="description" mapto="text-multiline" text="Description" />
+			<enum name="sources" text="Sources" />
+			<enum name="literature" text="Literature" />
+		</type>
+
+		<type name="type" extend="u8">
+			<enum name="place" text="Place" />
+			<enum name="region" text="Region" />
+		</type>
+
+		<key name="class" mapto="object-ref">
+			<field type="type" />
+			<field type="object-name" />
+		</key>
+
+		<key name="object">
+			<field type="object-id" />
+			<field type="property-id" />
+			<field type="language-id" />
+		</key>
+	</namespace>
+	<namespace name="phil-comment">
+		<key name="class" mapto="object-ref">
+			<field type="object-name" />
+		</key>
+		<key name="object" mapto="text-multiline">
+			<field type="object-id" />
+			<field name="property-id" type="comment-property-id" />
+			<field type="language-id" />
+		</key>
+	</namespace>
+	<namespace name="hist-comment">
+		<type name="type" extend="u8">
+			<enum name="event" text="Event" plural="Events" />
+			<enum name="ethnic-group" text="Ethnic Group" plural="Ethnic Groups"/>
+			<enum name="social-group" text="Social Group" plural="Social Groups" />
+			<enum name="religious-group" text="Religious Group" plural="Religious Groups" />
+			<enum name="functional-group" text="Functional Group" plural="Functional Groups" />
+			<enum name="professional-group" text="Professional Group" plural="Professional Groups" />
+			<enum name="misc" text="Miscellaneous" />
+		</type>
+		<key name="class" mapto="object-ref">
+			<field type="type" />
+			<field type="object-name" />
+		</key>
+		<key name="object">
+			<field type="object-id" />
+			<field name="property-id" type="comment-property-id" />
+			<field type="language-id" />
+		</key>
+	</namespace>
+	<namespace name="text">
+		<type name="property-id" extend="property-id" mapto="text-line">
+			<enum name="summary" text="Summary" mapto="text-multiline" />
+			<enum name="date" text="Date" />
+			<enum name="date-comment" text="Date Comment" mapto="text-multiline" />
+			<enum name="sender" text="Sender" />
+			<enum name="addressee" text="Addressee" />
+			<enum name="topic" text="Topic" />
+			<enum name="other-persons" text="Other Persons" />
+			<enum name="ethnic-groups" text="Ethnic Groups" />
+			<enum name="social-groups" text="Social Groups" />
+			<enum name="religious-groups" text="Religious Groups" />
+			<enum name="functional-groups" text="Functional Groups" />
+			<enum name="professional-groups" text="Professional Groups" />
+			<enum name="place" text="Place" />
+			<enum name="region" text="Region" />
+			<enum name="text-type" text="Text Type" />
+			<enum name="formal-peculiarities" text="Formal Peculiarities" />
+		</type>
+
+		<key name="book" mapto="object-ref">
+			<field name="object-number" type="u32" />
+		</key>
+
+		<key name="letter" mapto="object-ref">
+			<field name="book-id" type="object-id" />
+			<field name="object-number" type="u32" />
+		</key>
+
+		<key name="content" mapto="text-annotated">
+			<field name="letter-id" type="object-id" />
+		</key>
+
+		<key name="comment" mapto="text-multiline">
+			<field name="letter-id" type="object-id" />
+			<field type="object-id" />
+			<field type="language-id" />
+		</key>
+
+		<key name="metadata">
+			<field name="letter-id" type="object-id" />
+			<field type="property-id" />
+			<field type="language-id" />
+		</key>
+
+		<key name="translation" mapto="text-multiline">
+			<field name="letter-id" type="object-id" />
+			<field type="language-id" />
+		</key>
+	</namespace>
+
+	<namespace name="intro">
+		<key name="class" mapto="object-ref">
+			<field type="object-name" />
+		</key>
+		<type name="property-id" extend="property-id">
+			<enum name="title" text="Title" mapto="text-line" />
+			<enum name="text" text="Text" mapto="text-multiline" />
+		</type>
+		<key name="object">
+			<field type="object-id" />
+			<field type="property-id" />
+			<field type="language-id" />
+		</key>
+	</namespace>
+
+	<dynid type="object-id">
+		<owner key="person-class" value="object-ref" var="id">
+			<ref key="person-object" field="object-id" />
+		</owner>
+		<owner key="location-class" value="object-ref" var="id">
+			<ref key="location-object" field="object-id" />
+		</owner>
+		<owner key="text-book" value="object-ref" var="id">
+			<ref key="text-letter" field="book-id" />
+		</owner>
+		<owner key="text-letter" value="object-ref" var="id">
+			<ref key="text-content" field="letter-id" />
+			<ref key="text-comment" field="letter-id" />
+			<ref key="text-metadata" field="letter-id" />
+			<ref key="text-translation" field="letter-id" />
+		</owner>
+		<owner key="text-content" value="text-annotated" var="comments.id">
+			<ref key="text-comment" field="object-id" />
+		</owner>
+	</dynid>
+	<!--
+	<key name="dropdown-values" mapto="text-multiline">
+		<field type="property-id" />
+		<key name="-extendable">
+			<field name="anotherone" type="property-id" />
+		</key>
+		<key name="extendable-" />
+	</key>-->
+</db-spec>
+

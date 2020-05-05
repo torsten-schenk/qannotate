@@ -1,0 +1,22 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+	<file>images/logo_icon.svg</file>
+	<file>images/logo.svg</file>
+	<file>images/logo.png</file>
+	<file>images/location_icon.svg</file>
+	<file>images/bibliography_icon.svg</file>
+	<file>images/person_icon.svg</file>
+	<file>images/person_icon.png</file>
+	<file>images/book_icon.svg</file>
+	<file>images/letter_icon.svg</file>
+	<file>images/hist_icon.svg</file>
+	<file>images/phil_icon.svg</file>
+	<file>images/intro_icon.svg</file>
+	<file>images/comment_icon.svg</file>
+	<file>images/magnifier_icon.svg</file>
+	<file>images/reference_icon.svg</file>
+	<file>images/saved_icon.svg</file>
+	<file>images/unsaved_icon.svg</file>
+	<file>images/checkbox_indeterminate.png</file>
+</qresource>
+</RCC>

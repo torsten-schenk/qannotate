@@ -1,0 +1,3 @@
+value: name="text-line" -> single line edit widget
+value: name="text-multiline" -> multi line edit widget
+
