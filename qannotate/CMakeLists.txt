@@ -22,14 +22,11 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
-#find_package(Qt4 REQUIRED QtGui QtNetwork)
 find_package(Qt5Core)
 find_package(Qt5Widgets)
 find_package(Qt5Network)
 find_package(Qt5Svg)
 find_package(Qt5Xml)
-#find_package(QScintilla REQUIRED)
-#include_directories(${QSCINTILLA_INCLUDE_DIRS})
 
 set(QAnnotate_SRCS
 	../common/base32.c
@@ -65,8 +62,6 @@ add_custom_target(gitversion
 )
 
 qt5_add_resources(QAnnotate_RES_SOURCES ${QAnnotate_RESOURCES})
-#qt4_wrap_cpp(QAnnotate_MOC_SRCS ${QAnnotate_MOC_HEADERS})
-#qt4_wrap_ui(QAnnotate_UI_HEADERS ${QAnnotate_UIS})
 
 if(WIN32)
 	set(GUI_TYPE WIN32)
@@ -75,9 +70,6 @@ if(WIN32)
 	include_directories(/opt/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore /opt/mxe/usr/i686-w64-mingw32.static/qt5/include/QtXml /opt/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets /opt/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui /opt/mxe/usr/i686-w64-mingw32.static/qt5/include/QtNetwork /opt/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -isystem /opt/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/default -isystem /opt/mxe/usr/i686-w64-mingw32.static/qt5/include)
 	add_executable(QAnnotate WIN32 ${QAnnotate_SRCS} ${QAnnotate_MOC_SRCS} ${QAnnotate_RES_SOURCES} ${QAnnotate_UI_HEADERS} appicon.rc)
 	target_link_libraries(QAnnotate qtfe -L${MXEPREFIX}/qt5/lib/ -lQt5Xml -lQt5Widgets -lQt5FontDatabaseSupport -lQt5EventDispatcherSupport -lQt5ThemeSupport -lQt5Gui -lQt5Core ${MXEPREFIX}/qt5/plugins/platforms/libqwindows.a -lQt5WindowsUIAutomationSupport ${MXEPREFIX}/qt5/plugins/iconengines/libqsvgicon.a ${MXEPREFIX}/qt5/plugins/imageformats/libqsvg.a -lQt5Svg ${MXEPREFIX}/qt5/plugins/platforms/libqminimal.a -lsodium -lssl -lbtree -luv -lcrypto -lz -ltiff -lpcre2-16 -lharfbuzz -lpng -ljpeg -lmng -llcms2 -llzma -limm32 -lws2_32 -lwsock32 -lnetapi32 -luserenv -lwinmm -lz -lversion -lkernel32 -lpsapi -liphlpapi ${PLATFORM_SUPPORT})
-
-	#target_link_libraries(QAnnotate qtfe -L/opt/mxe/usr/i686-w64-mingw32.static/qt/lib/ -lQtGui -lQtNetwork -lQtCore -lsodium -lssl -lcrypto -lz -ltiff -lpng -ljpeg -lmng -llcms2 -llzma -limm32 -lws2_32 -lwsock32 -lwinmm -lz)
-	#target_link_libraries(QAnnotate Qt4::QtGui -ltiff -lpng -ljpeg -lmng -llcms2 -llzma -lz -limm32 -lws2_32 -lwsock32 -lwinmm -lz)
 endif(WIN32)
 if(UNIX)
 	add_executable(QAnnotate ${QAnnotate_SRCS} ${QAnnotate_MOC_SRCS} ${QAnnotate_RES_SOURCES} ${QAnnotate_UI_HEADERS} ${BACKWARD_ENABLE})
