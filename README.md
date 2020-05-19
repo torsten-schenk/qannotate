@@ -46,15 +46,15 @@ If the previous steps completed successfully, you should see an object tree on t
 
 ### Annotating Text
 
-The annotatable original texts can be found within the category ``Texts`` &larr; ``Liber \<number\>`` in the object tree.
+The annotatable original texts can be found within the category ``Texts`` &larr; ``Liber <number>`` in the object tree.
 Whenever you create a letter within that category, you will be asked to enter the content text alongside the letter number.
 
 The following steps will create a new annotatable text:
 
 * Create a new book within ``Texts`` in the object tree. Assign a number to the book.
-* Create a new letter within the subcategory ``Liber \<number\>``.
+* Create a new letter within the subcategory ``Liber <number>``.
 * Assign a number to the letter and paste the text to be annotated into the ``Content`` field.
-* Double-clicking the resulting subobject ``Epistula \<number\>`` will now open the GUI with the annotatable text.
+* Double-clicking the resulting subobject ``Epistula <number>`` will now open the GUI with the annotatable text.
 
 ### Referencing Objects
 
