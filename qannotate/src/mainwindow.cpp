@@ -140,7 +140,7 @@ void MainWindow::handleAbout()
 	tb->setMinimumSize(QSize(700, 200));
 	tb->setOpenExternalLinks(true);
 	QString qtVersion = QT_VERSION_STR;
-	tb->setHtml("<center><img src=\"qrc:/images/logo.png\"></center><p style=\"text-align: center; font-weight: bold;\">Version 0.9.8<br>Compiled with Qt " + qtVersion + "<br>Customized for Cassiodor-project</p>"); // TODO fix ugly old style html workaround for non working css (magin: auto;)
+	tb->setHtml("<center><img src=\"qrc:/images/logo.png\"></center><p style=\"text-align: center; font-weight: bold;\">Version 0.9.9<br>Compiled with Qt " + qtVersion + "<br>Customized for Cassiodor-project</p>"); // TODO fix ugly old style html workaround for non working css (magin: auto;)
 	vLayout->addWidget(tb);
 	QPushButton *okButton = new QPushButton("Close",aboutDialog);
 	aboutDialog->setTabOrder(okButton, tb);
