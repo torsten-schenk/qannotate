@@ -131,7 +131,7 @@
 	</type>-->
 
 	<type name="comment-property-id" extend="property-id" mapto="text-line">
-		<enum name="expansion" text="ID Expansion" />
+		<enum name="alias" text="ID Alias" />
 		<enum name="content" text="Content" mapto="text-multiline" />
 		<enum name="sources" text="Sources" />
 		<enum name="literature" text="Literature" />
@@ -142,7 +142,7 @@
 		</value>
 
 		<type name="property-id" extend="property-id" mapto="text-line">
-			<enum name="expansion" text="ID Expansion" />
+			<enum name="alias" text="ID Alias" />
 			<enum name="name" text="Name" />
 			<enum name="sex" text="Sex" mapto="sex" />
 			<enum name="born" text="Born" />
@@ -204,7 +204,7 @@
 
 	<namespace name="location">
 		<type name="property-id" extend="property-id" mapto="text-line">
-			<enum name="expansion" text="ID Expansion" />
+			<enum name="alias" text="ID Alias" />
 			<enum name="name" text="Name" />
 			<enum name="ancient-name" text="Ancient Name" />
 			<enum name="country" text="Country" />
