@@ -35,7 +35,7 @@ setup a new database:
 * You can download the current precompiled windows version [here](TODO add link). No installation is required,
 just launch the file.
 
-* In the menu ``File`` &larr; ``Open``, select the database folder you created earlier.
+* In the menu ``File`` &rarr; ``Open``, select the database folder you created earlier.
 
 ### Adding/Editing Objects
 
@@ -46,7 +46,7 @@ If the previous steps completed successfully, you should see an object tree on t
 
 ### Annotating Text
 
-The annotatable original texts can be found within the category ``Texts`` &larr; ``Liber <number>`` in the object tree.
+The annotatable original texts can be found within the category ``Texts`` &rarr; ``Liber <number>`` in the object tree.
 Whenever you create a letter within that category, you will be asked to enter the content text alongside the letter number.
 
 The following steps will create a new annotatable text:
